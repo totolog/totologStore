@@ -13,3 +13,113 @@
  *= require_tree .
  *= require_self
  */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    transition: 0.5s;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.header_container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.header_logo {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    transition: all 0.5s;
+}
+
+.header_logo img {
+    height: 60px;
+}
+
+.header_logo .white {
+    display: none;
+}
+
+/* 画像の変化 */
+.is-animation .header_logo .enji {
+    display: none;
+}
+.is-animation .header_logo .white {
+    display: inline-block;
+}
+
+/* 背景色の変化 */
+.is-animation {
+    background: rgba(183, 25, 63, 1.0);
+}
+
+.header_menu {
+    width: 70%;
+    align-items: center;
+}
+
+.header_menu ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: right;
+}
+
+.header_menu ul li {
+    text-align: center;
+    width: 10%;
+}
+.header_menu ul li a {
+    display: block;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, Arial, sans-serif;
+    text-decoration: none;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    width: 100%;
+    transition: all 0.6s;
+}
+
+.header_BG .comments {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(summer.jpg);
+    background-size: cover;
+}
+
+
+/* フッター */
+
+footer {
+    margin-top: 5rem;
+    width: 100%;
+    background-color: rgba(183, 25, 63, 1.0);
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+footer p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-family: 'Times New Roman', Times, Arial, sans-serif;
+}

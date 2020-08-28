@@ -1,2 +1,78 @@
-<h1>Sample App</h1>
-<p>Welcome to Totolog Store</p>
+<div class="header_BG">
+    <div class="comments"></div>
+</div>
+<section class="menu">
+    <div class="line"></div>
+        <div class="menues">
+            <ul>
+                <li class="info">
+                    <%= link_to "About", about_path %>
+                </li>
+                <li class="schedule">
+                    <%= link_to "Login", "#" %>
+                </li>
+                <li class="fee">
+                    <%= link_to "Sign Up", signup_path %>
+                </li>
+                <li class="map">
+                    <%= link_to "Help", help_path %>
+                </li>
+                <li class="photo">
+                    <%= link_to "Contact", contact_path %>
+                </li>
+                <li class="question">
+                    <%= link_to "問い合わせ", "#" %>
+                </li>
+            </ul>
+        </div>
+</section>
+<section class="update">
+        <div class="C_container">
+            <div class="title">
+                <h2><span class="sub">UPDATE</span>最新情報</h2>
+            </div>
+            <div class="C_Contents">
+                <div class="left">
+                    <div class="U_photo">
+                        <%= link_to image_tag("U_photo1.jpg"), "#" %>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="C_content">
+                        <article class="U_article">
+                            <div class="C_head">
+                                <p class="C_date">2020/05/13</p>
+                            </div>
+                            <div class="U_detail">
+                                <p><a href="#">「ととろぐ島１周年記念花火大会」は、2020年8月29日（金）19時00分～22時00分に開催します。</a></p>
+                            </div>
+                        </article>
+                        <article class="U_article">
+                            <div class="C_head">
+                                <p class="C_date">2019/08/27</p>
+                            </div>
+                            <div class="U_detail">
+                                <p><a href="#">「ととろぐ島記念花火大会」は終了しました。来年は2020年8月29日（金）開催予定です。</a></p>
+                            </div>
+                        </article>
+                        <article class="U_article">
+                            <div class="C_head">
+                                <p class="C_date">2020/08/23</p>
+                            </div>
+                            <div class="U_detail">
+                                <p><a href="#">「ととろぐ島記念花火大会」当日、必ずチケットをご持参下さい。チケットをお忘れになられると入場できません。</a></p>
+                            </div>
+                        </article>
+                        <article class="U_article">
+                            <div class="C_head">
+                                <p class="C_date">2019/07/23</p>
+                            </div>
+                            <div class="U_detail">
+                                <p><a href="#">「ととろぐ島記念花火大会」チケットの転売を禁止しています。</a></p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

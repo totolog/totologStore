@@ -1,0 +1,20 @@
+<header>
+        <div class="header_container">
+            <div class="header_logo">
+                <a href="#">
+                    <%= link_to image_tag("logo.png"), "#", class:"enji" %>
+                    <%= link_to image_tag("logo-white.png"), "#", class:"white" %>
+                </a>
+            </div>
+            <div class="header_menu">
+                <ul>
+                    <li><%= link_to "Home", root_path %></li>
+                    <li><%= link_to "Abount", about_path %></li>
+                    <li><%= link_to "Login", "#" %></li>
+                    <li><%= link_to "Sign Up", signup_path %></li>
+                    <li><%= link_to "Help", help_path %></li>
+                    <li><%= link_to "Contact", contact_path %></li>
+                </ul>
+            </div>
+        </div>
+    </header>

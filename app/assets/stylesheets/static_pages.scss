@@ -1,3 +1,157 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.menu {
+    width: 100%;
+}
+
+.line {
+    height: 7px;
+    background: linear-gradient(to right,#f8d28b 0%,#ff7e7e 20%,#daf99e 40%,#c2fbe9 60%,#a2b0ff 80%,#ff80e7 100%);
+}
+
+.menu .menues {
+    border-bottom: 2px solid #eee;
+}
+.menu .menues ul {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.menu .menues ul li {
+    height: 140px;
+    width: calc(100%/6);
+    background-size: 30%;
+    border-right: 2px solid #eee;
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    list-style: none;
+    text-align: center;
+    transition: all 0.5s;
+}
+.menu .menues ul li a {
+    display: block;
+    padding-top: 100px;
+    font-size: 1rem;
+    height: 100%;
+    font-weight: 900;
+    text-decoration: none;
+    color: #000000;
+}
+
+.menu .menues ul .info{
+    border-left: 1px solid #eee;;
+    background-image: url(news.png);
+}
+.menu .menues ul .schedule{
+    background-image: url(schedule.png);
+}
+.menu .menues ul .fee{
+    background-image: url(ticket.png);
+    background-size: 40%;
+}
+.menu .menues ul .map{
+    background-image: url(map.png);
+}
+.menu .menues ul .photo{
+    background-image: url(photo.png);
+    background-size: 40%;
+}
+.menu .menues ul .question{
+    background-image: url(mail.png);
+}
+
+.menu .menues ul li:hover {
+    background-color: #eeeeee;
+}
+
+/* 最新情報 */
+.update {
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+/* 共通 */
+.C_container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* 共通 */
+.C_container .title {
+    margin-bottom: 3rem;
+}
+
+/* 共通 */
+.title h2 {
+    font-weight: 900;
+}
+
+/* 共通 */
+.title h2 .sub {
+    font-size: 1rem;
+    display: block;
+    background-image: url(photo.png);
+    background-size: 4%;
+    background-repeat: no-repeat;
+    margin-left: -10px;
+    margin-bottom: 8px;
+    padding: 1rem 0 1rem 1rem;
+    font-weight: 700;
+}
+
+/* 共通 */
+.C_Contents {
+    width: 100%;
+    display: flex;
+}
+
+/* 共通 */
+.C_Contents .left {
+    width: 60%;
+}
+/* 共通 */
+.C_Contents .left img {
+    width: 95%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 共通 */
+.C_Contents .right {
+    width: 40%;
+}
+.C_Contents .right .C_content {
+    width: 100%;
+}
+
+.C_Contents .U_article {
+    border-top: 3px solid #eeeeee;
+    padding: 10px 0;
+}
+/* 共通 */
+article .C_head {
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 400;
+    padding: 0 0 0 5px;
+    border-left: 4px solid #E0AABD;
+}
+
+.C_Contents .U_article .U_detail {
+    margin-left: 10px;
+}
+.C_Contents .U_article .U_detail p {
+    margin-bottom: 0;
+}
+.C_Contents .U_article .U_detail p a {
+    color: #114e83;
+    text-decoration: underline;
+}
+.C_Contents .U_article .U_detail p a:hover {
+    text-decoration: none;
+}
