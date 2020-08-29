@@ -52,6 +52,10 @@ header {
     display: none;
 }
 
+.blank {
+    padding-top: 6rem;
+}
+
 /* 画像の変化 */
 .is-animation .header_logo .enji {
     display: none;

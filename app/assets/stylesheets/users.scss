@@ -1,3 +1,89 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section {
+    padding: 10rem 3rem 5rem 3rem;
+}
+.user_container {
+    display: flex;
+}
+
+.personal {
+    background-color: #f0f050;
+    width: 20%;
+}
+.history {
+    background-color: blue;
+    width: 80%;
+}
+
+// Sign up
+.signup .signup_container {
+    width: 40%;
+    margin: 0 auto;
+}
+.signup h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.signup label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.signup input {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 5px 2px;
+}
+
+.signup .signup_btn {
+    width: 20%;
+    margin: 2rem auto 0;
+    background-color: #007bff;
+    border-radius: 5px;
+    border-color: #007bff;
+    display: block;
+    color: white;
+}
+
+// Alert
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+#error_explanation {
+    color: red;
+    ul {
+        color: red;
+        margin: 0 0 30px 0;
+    }
+}
+
+// .field_with_errors {
+//     @extend .has-error;
+//     .form-control {
+//         color: $state-danger-text;
+//     }
+// }
+
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
