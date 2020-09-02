@@ -5,8 +5,13 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
+gem 'bootstrap-sass', '3.3.7'
 gem "bcrypt", "3.1.12"
 gem 'faker',          '1.7.3'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Puma as the app server
@@ -70,6 +75,7 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,0 +1,81 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+p {
+    font-family: Roboto, "游ゴシック", YuGothic, "Yu Gothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Arial, "メイリオ", Meiryo, sans-serifbody;
+}
+
+.product_container {
+    margin-top: 5rem;
+}
+
+.product_container .product_area {
+    max-width: 80%;
+    padding: 1rem 0 0 0;
+    display:  flex;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+}
+
+.product_container .product_left {
+    width: 20%;
+    margin-right: 5px;
+    background-color: blue;
+}
+
+.product_container .product_right {
+    width: 80%;
+}
+
+.product .shelf {
+    padding: 2rem 3rem;
+}
+
+.product_container .shelfgrid {
+    display: flex;
+    flex-flow: row  wrap;
+    // justify-content: space-between;
+    align-content: flex-start;
+    
+}
+
+.product_container .product_item {
+    width: calc(100%/3);
+    padding: 0 1rem;
+    background-color: #fff;
+    word-wrap: break-word;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.product_container .product_item a {
+    text-decoration: none;
+    color: rgb(82, 82, 99);
+    font-weight: 600;
+}
+.product_container .product_item .product_name {
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+
+.product_container img {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 5px;
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+    padding: 10px 20px;
+}
+
+.product_container .cart_btn {
+    margin: auto auto 1rem;
+
+}

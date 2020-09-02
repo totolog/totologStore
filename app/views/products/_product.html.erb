@@ -1,0 +1,8 @@
+<div class="product_item">
+    <%= link_to product_path(product) do %>
+        <%= image_tag "#{product.image_name}", alt: "nike1", class:"image" %>
+        <p class="product_name"><%= product.name %></p>
+        <p class="price">¥<%= product.price%>（税込）</p>
+        <p class="product_detail"><%= product.comment%></p>
+    <% end %>
+</div>

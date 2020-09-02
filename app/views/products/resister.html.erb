@@ -1,0 +1,28 @@
+<% provide(:title, "Resister") %>
+<section class="resister">
+    <div class="resister_container">
+        <h1> 商品登録</h1>
+        <div class="resister_area">
+            <%= form_for(@product_resister) do |f| %>
+
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'resister_controle' %>
+
+                <%= f.label :price %>
+                <%= f.text_field :price, class: 'resister_controle' %>
+
+                <%= f.label :comment %>
+                <%= f.text_field :comment, class: 'resister_controle' %>
+
+                <%= f.label :type %>
+                <%= f.text_field :type, class: 'resister_controle' %>
+
+                <span class="image_name">Image</span>
+                <%= f.file_field :image_name %>
+
+
+                <%= f.submit "Resister", class:"btn resister_btn" %>
+            <% end %>
+        </div>
+    </div>
+</section>

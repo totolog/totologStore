@@ -1,0 +1,28 @@
+<% provide(:title, "Content of Products") %>
+<section class="product">
+        <div class="product_container">
+            <div class="product_area">
+                <div class="product_left">
+                    <div class="search_role">
+                        <div class="serch_howto">
+                            <div class="serch_area">
+                                <div class="category_area">
+                                    <h2>商品カテゴリー</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_right">
+                    <div class="shelf">
+                        <div class="exit"><%= @product_count %>点の商品がございます。</div>
+                        <%= will_paginate %>
+                        <div class="shelfgrid">
+                            <%= render @products %>
+                        </div>
+                        <%= will_paginate %>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
