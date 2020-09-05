@@ -1,1 +1,36 @@
-<% provide(:title, "Product3") %>
+<% provide(:title, "") %>
+<section class="deatil">
+    <div class="detail_container">
+        <div class="detail_area">
+            <div class="left_image">
+            <% @product_images.each do |image| %>
+                <%= image_tag "#{image.name1}", alt: "#{@product_info.name}", class:"image" %>
+                <% if image.name2? %>
+                    <%= image_tag "#{image.name2}", alt: "#{@product_info.name}", class:"image" %>
+                <% end %>
+                <% if image.name3? %>
+                    <%= image_tag "#{image.name3}", alt: "#{@product_info.name}", class:"image" %>
+                <% end %>
+                <% if image.name4? %>
+                    <%= image_tag "#{image.name4}", alt: "#{@product_info.name}", class:"image" %>
+                <% end %>
+            <% end %>
+            </div>
+            <div class="right_explanation">
+                <div class="product_detail_area">
+                    <div class="product_detail">
+                        <h2><%= @product_info.name %></h2>
+                        <p class="price">¥<%= @product_info.price %>(税込)</p>
+                        <p class="detail_sentence"><%= @product_info.comment %></p>
+                    </div>
+                    <div class="cart">
+                        <%# <%= form_for() do |f|%>
+
+                        <%# <%= f.submit "カートに追加", class:"btn cart_btn" %> %>
+                        <%# <% end %> %> %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

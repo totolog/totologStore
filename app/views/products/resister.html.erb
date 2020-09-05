@@ -3,26 +3,44 @@
     <div class="resister_container">
         <h1> 商品登録</h1>
         <div class="resister_area">
-            <%= form_for(@product_resister) do |f| %>
+        <%= form_for(@product_resister) do |f| %>
 
-                <%= f.label :name %>
-                <%= f.text_field :name, class: 'resister_controle' %>
+            <p><%= f.label :name %></p>
+            <%= f.text_field :name, class: 'resister_controle' %>
 
-                <%= f.label :price %>
-                <%= f.text_field :price, class: 'resister_controle' %>
+            <p><%= f.label :price %></p>
+            <%= f.text_field :price, class: 'resister_controle' %>
 
-                <%= f.label :comment %>
-                <%= f.text_field :comment, class: 'resister_controle' %>
+            <p><%= f.label :comment %></p>
+            <%= f.text_field :comment, class: 'resister_controle' %>
 
-                <%= f.label :type %>
-                <%= f.text_field :type, class: 'resister_controle' %>
+            <p><%= f.label :category %></p>
+            <%= f.select :category, [
+                ["ランニングシューズ", "running_shoes"],
+                ["ライフスタイル", "life_style"],
+                ["ソックス", "socks"],
+                ["アクセサリー", "accessory"],
+                ["サプリメント", "supplement"]
+                ], class: 'resister_controle' %>
 
-                <span class="image_name">Image</span>
-                <%= f.file_field :image_name %>
+            <p class="image_name">Image</p>
+            <%= f.fields_for :images do |i| %>
+                <%= i.label :name1, "トップ画像" %>
+                <%= i.file_field :name1 %>
 
+                <%= i.label :name2, "画像2" %>
+                <%= i.file_field :name2 %>
 
-                <%= f.submit "Resister", class:"btn resister_btn" %>
+                <%= i.label :name3, "画像3" %>
+                <%= i.file_field :name3 %>
+
+                <%= i.label :name4, "画像4" %>
+                <%= i.file_field :name4 %>
             <% end %>
+
+
+            <%= f.submit "Resister", class:"btn resister_btn" %>
+        <% end %>
         </div>
     </div>
 </section>

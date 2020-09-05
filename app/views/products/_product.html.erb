@@ -1,8 +1,14 @@
 <div class="product_item">
     <%= link_to product_path(product) do %>
-        <%= image_tag "#{product.image_name}", alt: "nike1", class:"image" %>
+        <% product_images = product.images %>
+        <% product_images.each do |image| %>
+            <%= image_tag "#{image.name1}", class:"image" %>
+        <% end %>
         <p class="product_name"><%= product.name %></p>
         <p class="price">¥<%= product.price%>（税込）</p>
         <p class="product_detail"><%= product.comment%></p>
+    <% end %>
+    <% if current_user&.admin? %>
+        <%= link_to "edit", edit_product_path(product) %>
     <% end %>
 </div>

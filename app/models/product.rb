@@ -3,9 +3,10 @@ class Product < ApplicationRecord
     validates :name, presence: true
     validates :price, presence: true
     validates :comment, presence: true
-    validates :type, presence: true
+    validates :category, presence: true
 
-    self.inheritance_column = :_type_disabled
-    
-    mount_uploader :image_name, ImageNameUploader
+
+    has_many :images, inverse_of: :product
+    accepts_nested_attributes_for :images
+
 end

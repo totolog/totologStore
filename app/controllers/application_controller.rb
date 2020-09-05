@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
           redirect_to login_url
         end
     end
+
+    def admin_user
+      unless current_user.admin?
+        flash[:danger] = "You don't manager"
+        redirect_to root_url
+      end
+    end
 end
