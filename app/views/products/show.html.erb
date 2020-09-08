@@ -4,30 +4,32 @@
         <div class="detail_area">
             <div class="left_image">
             <% @product_images.each do |image| %>
-                <%= image_tag "#{image.name1}", alt: "#{@product_info.name}", class:"image" %>
+                <%= image_tag "#{image.name1}", alt: "#{@product.name}", class:"image" %>
                 <% if image.name2? %>
-                    <%= image_tag "#{image.name2}", alt: "#{@product_info.name}", class:"image" %>
+                    <%= image_tag "#{image.name2}", alt: "#{@product.name}", class:"image" %>
                 <% end %>
                 <% if image.name3? %>
-                    <%= image_tag "#{image.name3}", alt: "#{@product_info.name}", class:"image" %>
+                    <%= image_tag "#{image.name3}", alt: "#{@product.name}", class:"image" %>
                 <% end %>
                 <% if image.name4? %>
-                    <%= image_tag "#{image.name4}", alt: "#{@product_info.name}", class:"image" %>
+                    <%= image_tag "#{image.name4}", alt: "#{@product.name}", class:"image" %>
                 <% end %>
             <% end %>
             </div>
             <div class="right_explanation">
                 <div class="product_detail_area">
                     <div class="product_detail">
-                        <h2><%= @product_info.name %></h2>
-                        <p class="price">¥<%= @product_info.price %>(税込)</p>
-                        <p class="detail_sentence"><%= @product_info.comment %></p>
+                        <h2><%= @product.name %></h2>
+                        <p class="price">¥<%= @product.price %>(税込)</p>
+                        <p class="detail_sentence"><%= @product.comment %></p>
                     </div>
                     <div class="cart">
-                        <%# <%= form_for() do |f|%>
-
-                        <%# <%= f.submit "カートに追加", class:"btn cart_btn" %> %>
-                        <%# <% end %> %> %>
+                        <%= form_for(CartItem.new, url: cart_items_path) do |f|%>
+                        <%= f.label :quantity, "数量"%>
+                        <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]%>
+                        <%= f.hidden_field :product_id, value: @product.id %>
+                        <%= f.submit "カートに追加", class:"btn cart_btn" %>
+                        <% end %>
                     </div>
                 </div>
             </div>

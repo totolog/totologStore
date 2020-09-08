@@ -1,0 +1,53 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.cart_container {
+    display: flex;
+    width: 70%;
+    margin: 6rem auto 0;
+}
+
+.col-md-4 img {
+    width: 100%;
+}
+
+.cart .card {
+    margin-top: 1rem!important;
+}
+
+.hover {
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease 0s;
+}
+.hover:hover {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.1875em);
+}
+
+.cart .accounting {
+    width: 30%;
+    min-width: 200px;
+    position: fixed;
+}
+
+.accounting .title {
+    display: flex;
+}
+
+.accounting .accounting_count,
+.accounting .accounting_total {
+    width: 50%;
+}
+
+.accounting .right {
+    text-align: right;
+}
+
+.accounting .accounting_title {
+    margin-bottom: 3rem;
+}
+
+.accounting .accounting_btn {
+    text-align: center;
+    margin-top: 5rem;
+}

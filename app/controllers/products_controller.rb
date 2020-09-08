@@ -16,8 +16,9 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product_info = Product.find_by(id: params[:id])
-        @product_images = @product_info.images
+        @product= Product.find_by(id: params[:id])
+        @product_images = @product.images
+        session[:product_id] = @product.id
     end
 
     def resister

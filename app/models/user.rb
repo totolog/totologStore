@@ -52,6 +52,8 @@ class User < ApplicationRecord
     #     UserMailer.account_activation(self).deliver_now
     # end
 
+    has_many :carts
+
     private
 
     def downcase_email

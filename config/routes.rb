@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :create, :edit, :show, :update]
 
+  resources :carts
+  resources :cart_items
+
   get "/resister", to:"products#resister"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
