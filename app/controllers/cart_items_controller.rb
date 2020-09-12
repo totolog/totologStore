@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
-
+    before_action :logged_in_user
+    before_action :current_cart, only: [:show, :set_line_item, :set_cart]
     before_action :set_line_item, only: [:create, :destroy]
-    before_action :set_user
-    before_action :set_cart
+    before_action :set_cart, only: [:create]
 
     def create
         @cart_item = @cart.cart_items.build(product_id: params[:cart_item][:product_id], quantity: params[:cart_item][:quantity])
@@ -27,10 +27,6 @@ class CartItemsController < ApplicationController
     end
 
     private
-
-    def set_user
-        @user = current_user
-    end
 
     def set_line_item
         @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])

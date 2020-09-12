@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_name: MyString
+  first_name: MyString
+  furi_last_name: MyString
+  furi_first_name: MyString
+  postal_code: MyString
+  prefecture: MyString
+  address: MyString
+
+two:
+  last_name: MyString
+  first_name: MyString
+  furi_last_name: MyString
+  furi_first_name: MyString
+  postal_code: MyString
+  prefecture: MyString
+  address: MyString

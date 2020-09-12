@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
     def create
         @product_resister = Product.new(product_image_params)
         if @product_resister.save
+            flash[:success] = "商品の登録が完了しました。"
             redirect_to products_path
         else
             render "resister"

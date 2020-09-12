@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_132829) do
+ActiveRecord::Schema.define(version: 2020_09_11_002501) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "user_id"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "furi_last_name"
+    t.string "furi_first_name"
+    t.string "postal_code"
+    t.string "prefecture"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "store", default: false, null: false
+    t.string "how_to_pay"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_addresses_on_order_id"
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", default: 0
@@ -36,6 +53,16 @@ ActiveRecord::Schema.define(version: 2020_09_05_132829) do
     t.string "name4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "quantity"
+    t.integer "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|

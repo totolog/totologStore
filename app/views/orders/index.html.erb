@@ -1,0 +1,103 @@
+<% provide(:title, "購入確認") %>
+<section class="buy">
+    <div class="buy_container">
+        <div class="buy_area">
+            <div class="left">
+                <div class="main_area">
+                    <div class="address_container">
+                        <div class="address_header"><h2>1.お届け先情報</h2></div>
+                        <div class="address_area">
+                            <% if session[:store]  == "1" %>
+                            <div class="select">
+                                <div class="store">
+                                    <p>店頭での受け取り</p>
+                                </div>
+                            </div>
+                            <% end %>
+                            <div class="user_name">
+                                <p>氏名：<%= session[:last_name] %>　<%= session[:first_name] %></p>
+                            </div>
+                            <% if session[:store]  == "0" %>
+                            <p>郵便番号：<%= session[:postal_code] %></p>
+                            <div class="prefecture">
+                                <div class="flex_box1">
+                                    <p>お届け先住所：<%= session[:prefecture] %><%= session[:address] %></p>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="cash_container">
+                        <div class="cash_header"><h2>2.お支払い方法</h2></div>
+                        <div class="cash_area">
+                            <div class="how_to_pay">
+                                <p><%= session[:how_to_pay] %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="cart_area">
+                    <% @sum = 0 %>
+                    <%= link_to cart_item_path(current_user) do%>
+                    <% @cart_items.each do |cart_item|%>
+                    <% product = Product.find_by(id: cart_item.product_id) %>
+                    <div class="card mb-3 hover" style="max-width: 840px; margin-top: 3rem;">
+                        <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <% images= Image.find_by(product_id: cart_item.product_id) %>
+                            <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: cart_item.product_id).name}", class:"card-img" %>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title"><%= product.name %></h5>
+                            <p class="card-text"></p>
+                            <p class="card-text">
+                                <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
+                                <small class="text-muted"><%= cart_item.quantity%>個</small>
+                                <p style="margin-top:2rem;">小計：<%= product.price * cart_item.quantity %> 円</p>
+                                <% @sum += product.price * cart_item.quantity %>
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% end %>
+                </div>
+                <div class="accounting_area">
+                    <div class="accounting_title">
+                        <div class="title"><h3>ご注文金額</h3></div>
+                        <div class="total_title">
+                            <div class="accounting_total"><p>合計（税込み）</p></div>
+                            <div class="accounting_count"><p class="right">¥<%= @sum %></p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <%= form_for(@address, url: orders_path) do |f|%>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :last_name, value: session[:last_name] %>
+                    <%= f.hidden_field :first_name, value: session[:first_name] %>
+                    <%= f.hidden_field :furi_last_name, value: session[:furi_last_name] %>
+                    <%= f.hidden_field :furi_first_name, value: session[:furi_first_name] %>
+                    <%= f.hidden_field :postal_code, value: session[:postal_code] %>
+                    <%= f.hidden_field :prefecture, value: session[:prefecture] %>
+                    <%= f.hidden_field :address, value: session[:address] %>
+                    <%= f.hidden_field :store, value: session[:store] %>
+                    <%= f.hidden_field :how_to_pay, value: session[:how_to_pay] %>
+
+                    <%= f.fields_for :orders do |o|%>
+                        <% @cart_items.each do |cart_item|%>
+                            <% product = Product.find_by(id: cart_item.product_id) %>
+                                <%= o.hidden_field :product_id, value: product.id %>
+                                <%= o.hidden_field :quantity, value: cart_item.quantity %>
+                        <% end%>
+                    <% end %>
+
+                <p><%= f.submit "注文確定", class: 'btn' %></p>
+                <% end %>
+    </div>
+</section>

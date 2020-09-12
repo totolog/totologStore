@@ -10,5 +10,6 @@ class Product < ApplicationRecord
     accepts_nested_attributes_for :images
 
     has_many :cart_items
+    has_many :orders
 
 end

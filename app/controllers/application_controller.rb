@@ -1,18 +1,15 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
 
-    
+
     def current_cart
-      if session[:cart_id]
-        current_cart = Cart.find_by(id: session[:cart_id])
-        session[:cart_id] = current_cart.id
-        current_cart
+      cart = Cart.find_by(user_id: current_user.id)
+      if cart
+          current_cart = cart
       else
-        current_cart = Cart.create(user_id: current_user.id)
-        session[:cart_id] = current_cart.id
-        current_cart = Cart.find_by(id: session[:cart_id])
-        current_cart
+          current_cart = Cart.create(user_id: current_user.id)
       end
+      current_cart
     end
 
     private
