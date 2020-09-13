@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
     def address_params
         params.require(:address).permit(:user_id, :last_name, :first_name, :furi_last_name, :furi_first_name, :postal_code, :prefecture, :address, :store, :how_to_pay, orders_attributes: [
-            :product_id, :quantity
+            product_id:[], quantity:[]
         ])
     end
 end
