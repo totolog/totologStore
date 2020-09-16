@@ -4,6 +4,8 @@
 
 .user_container {
     display: flex;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .personal {
@@ -11,8 +13,10 @@
     width: 20%;
 }
 .history {
-    background-color: blue;
     width: 80%;
+}
+.cart_area {
+    margin-right: 3rem;
 }
 
 // Sign up

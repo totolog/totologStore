@@ -15,10 +15,12 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <p class="card-text">
                 <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
-                <small class="text-muted"><%= cart_item.quantity%>個</small>
+                <% if product.category == "running_shoes" %>
+                  <p class="text-muted">サイズ：<%= cart_item.size%></p>
+                <% end %>
+                <p class="text-muted"><%= cart_item.quantity%>個</p>
                 <p style="margin-top:2rem;">小計：<%= product.price * cart_item.quantity %> 円</p>
                 <% @sum += product.price * cart_item.quantity %>
               </p>

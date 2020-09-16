@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
     before_action :set_cart, only: [:create]
 
     def create
-        @cart_item = @cart.cart_items.build(product_id: params[:cart_item][:product_id], quantity: params[:cart_item][:quantity])
+        @cart_item = @cart.cart_items.build(product_id: params[:cart_item][:product_id], quantity: params[:cart_item][:quantity], size: params[:cart_item][:size])
         if @cart_item.save
             flash[:success] = "Complete to enter the products you chose."
             redirect_to cart_item_path(current_user)

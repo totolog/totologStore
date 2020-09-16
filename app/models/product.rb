@@ -7,9 +7,13 @@ class Product < ApplicationRecord
 
 
     has_many :images, inverse_of: :product
-    accepts_nested_attributes_for :images
-
+    # accepts_nested_attributes_for :images
+    
     has_many :cart_items
+    
     has_many :orders
+    
+    has_many :sizes
+    accepts_nested_attributes_for :images, :sizes
 
 end

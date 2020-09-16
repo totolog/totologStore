@@ -16,12 +16,22 @@
 
             <p><%= f.label :category %></p>
             <%= f.select :category, [
-                ["ランニングシューズ", "running_shoes"],
-                ["ライフスタイル", "life_style"],
-                ["ソックス", "socks"],
-                ["アクセサリー", "accessory"],
-                ["サプリメント", "supplement"]
-                ], class: 'resister_controle' %>
+                ["野菜", "vegetables"],
+                ["フルーツ", "fruits"],
+                ["飲み物", "drink"],
+                ["食べ物", "food"]
+                ], class: 'category_class' %>
+
+                <%= f.fields_for :sizes do |s| %>
+                <div class="none" style="display: none">
+                    <p><%= s.label :size, "サイズ"%></p>
+                    <%= s.select :size, [24.0, 24.5,25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0], {include_blank: 0}, {class:"size", disabled:"disabled"}%>
+                </div>
+
+                <p><%= s.label :count, "個数"%></p>
+                <%= s.select :count, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], {include_blank: 0}%>
+
+                <% end %>
 
             <p class="image_name">Image</p>
             <%= f.fields_for :images do |i| %>
@@ -44,3 +54,10 @@
         </div>
     </div>
 </section>
+<script>
+$(function() {
+    $('#product_category').on('change',function(){
+        $('#product_sizes_attributes_0_size').prop('disabled',$.inArray($(this).val(),["accessory","supplement"])>=0);
+    }).trigger('change');
+});
+</script>

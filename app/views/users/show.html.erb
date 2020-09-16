@@ -1,12 +1,38 @@
 <% provide(:title, @user.name) %>
 <section class="account">
-    <div class="user">
+    <div class="user" style="display: flex">
         <div class="user_container">
             <div class="personal">
             <%= link_to image_tag("user.png", alt: @user.name), "#", class:"gravatar" %>
             <%= @user.name %>
             </div>
-            <div class="history"></div>
+            <div class="history">
+                <div calss="cart_area" style="width: 70%; margin-left: 5rem;">
+                    <% @orders.each do |order|%>
+                    <% product = Product.find_by(id: order.product_id) %>
+                    <div class="card mb-3 hover" style="max-width: 840px; margin-bottom:3rem;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <% images= Image.find_by(product_id: order.product_id) %>
+                                <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: order.product_id).name}", class:"card-img" %>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                <h5 class="card-title"><%= product.name %><%= l order.created_at, format: :for_result %></h5>
+                                <p class="card-text">
+                                    <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
+                                    <% if product.category == "running_shoes" %>
+                                    <p class="text-muted">サイズ：<%= cart_item.size%></p>
+                                    <% end %>
+                                    <p class="text-muted"><%= order.quantity%>個</p>
+                                    <p style="margin-top:2rem;">小計：<%= product.price * order.quantity %> 円</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <% end %>
+            </div>
         </div>
     </div>
 </section>

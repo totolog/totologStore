@@ -18,12 +18,17 @@ class ProductsController < ApplicationController
     def show
         @product= Product.find_by(id: params[:id])
         @product_images = @product.images
-        session[:product_id] = @product.id
+        product_count = Size.find_by(product_id: @product.id).count
+        @count = Array.new
+        @count.push *1..product_count
+
+
     end
 
     def resister
         @product_resister = Product.new
         @image = @product_resister.images.build
+        @size = @product_resister.sizes.build
     end
 
     def create
@@ -53,7 +58,10 @@ class ProductsController < ApplicationController
     def product_image_params
         params.require(:product).permit(:name, :price, :comment, :category, images_attributes:
             [
-                :name1, :name2, :name3, :name4
+                :id, :name1, :name2, :name3, :name4
+            ], sizes_attributes:
+            [
+                :id, :size, :count
             ]
         )
     end
