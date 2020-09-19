@@ -19,6 +19,36 @@
     margin-right: 3rem;
 }
 
+.order_wrapper {
+    margin-left: 5rem;
+}
+.order_container {
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.order_number {
+    border-radius: 10px 10px 0 0;
+    background-color: #6666E2;
+    padding: 0.5rem 2rem;
+    color: #fff;
+}
+.history .cart_area {
+    width: 70%;
+    padding: 10px;
+}
+
+.result_contain:not(:last-child) {
+    max-width: 840px;
+    margin-bottom:3rem;
+}
+
+.count {
+    display: flex;
+    justify-content: space-between;
+}
+
 // Sign up
 .signup .signup_container {
     width: 40%;

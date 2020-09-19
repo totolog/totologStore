@@ -58,19 +58,6 @@ header {
     padding-top: 10rem;
 }
 
-/* 画像の変化 */
-.is-animation .header_logo .enji {
-    display: none;
-}
-.is-animation .header_logo .white {
-    display: inline-block;
-}
-
-/* 背景色の変化 */
-.is-animation {
-    background: rgba(183, 25, 63, 1.0);
-}
-
 .header_menu {
     width: 70%;
     align-items: center;

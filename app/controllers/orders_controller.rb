@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
 
         @address = Address.new
         @address.orders.build
+        # order = @address.orders.build
+        # order.order_products.build
 
     end
 
@@ -33,8 +35,10 @@ class OrdersController < ApplicationController
     private
 
     def address_params
-        params.require(:address).permit(:user_id, :last_name, :first_name, :furi_last_name, :furi_first_name, :postal_code, :prefecture, :address, :store, :how_to_pay, orders_attributes: [
-            :product_id, :quantity, :user_id
-        ])
+        params.require(:address).permit(:user_id, :last_name, :first_name, :furi_last_name, :furi_first_name, :postal_code, :prefecture, :address, :store, :how_to_pay, orders_attributes:
+            [
+            :user_id, :product_id, :quantity
+            ]
+        )
     end
 end

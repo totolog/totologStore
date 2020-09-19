@@ -14,6 +14,7 @@ class Product < ApplicationRecord
     has_many :orders
     
     has_many :sizes
+    # has_many :order_products
     accepts_nested_attributes_for :images, :sizes
 
 end

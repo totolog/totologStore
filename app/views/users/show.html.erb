@@ -7,31 +7,53 @@
             <%= @user.name %>
             </div>
             <div class="history">
-                <div calss="cart_area" style="width: 70%; margin-left: 5rem;">
-                    <% @orders.each do |order|%>
-                    <% product = Product.find_by(id: order.product_id) %>
-                    <div class="card mb-3 hover" style="max-width: 840px; margin-bottom:3rem;">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <% images= Image.find_by(product_id: order.product_id) %>
-                                <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: order.product_id).name}", class:"card-img" %>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                <h5 class="card-title"><%= product.name %><%= l order.created_at, format: :for_result %></h5>
-                                <p class="card-text">
-                                    <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
-                                    <% if product.category == "running_shoes" %>
-                                    <p class="text-muted">サイズ：<%= cart_item.size%></p>
-                                    <% end %>
-                                    <p class="text-muted"><%= order.quantity%>個</p>
-                                    <p style="margin-top:2rem;">小計：<%= product.price * order.quantity %> 円</p>
-                                </p>
-                            </div>
+                <div class="order_wrapper">
+                    <% @address_ids.each do |address_id|%>
+                    <% @sum = 0 %>
+                    <div class="order_container hover">
+                        
+                        <div class="cart_area">
+                            <% orders = Order.where(address_id: address_id.id) %>
+                            <% orders.each do |order|%>
+                                <% product = Product.find_by(id: order.product_id) %>
+                                <div class="card mb-3 result_contain">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <% images= Image.find_by(product_id: order.product_id) %>
+                                            <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: order.product_id).name}", class:"card-img" %>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%= product.name %></h5>
+                                                <div class="card-text">
+                                                    <div class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></div>
+                                                    <div class="count">
+                                                        <p class="text-muted"><%= order.quantity%>個</p>
+                                                        <p class="text-muted">小計：<%= product.price * order.quantity %> 円</p>
+                                                        <% @sum += product.price * order.quantity %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="order_number">
+                            <p>注文番号：<%= address_id.id %></p>
+                            <p>購入日：<%= l address_id.created_at, format: :for_result %></p>
+                            <p>お届け先：
+                                <% if address_id.store == false %>
+                                    <%= address_id.prefecture %><%= address_id.address%>
+                                <% else %>
+                                    <span>店頭受け取り</span>
+                                <% end %>
+                            </p>
+                            <p>合計金額：¥ <%= @sum %></p>
                         </div>
                     </div>
-                </div>
                     <% end %>
+                </div>
             </div>
         </div>
     </div>
