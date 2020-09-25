@@ -2,7 +2,8 @@ class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token
     before_save   :downcase_email
     before_create :create_activation_digest
-    validates :name, presence: true, length: { maximum: 50 }
+    validates :last_name, presence: true, length: { maximum: 25 }
+    validates :first_name, presence: true, length: { maximum: 25 }
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 }, format: {with: VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false }
@@ -48,9 +49,9 @@ class User < ApplicationRecord
         update_attribute(:activated_at, Time.zone.now)
     end
 
-    # def send_activation_email
-    #     UserMailer.account_activation(self).deliver_now
-    # end
+    def send_activation_email
+        UserMailer.account_activation(self).deliver_now
+    end
 
     has_many :carts
 

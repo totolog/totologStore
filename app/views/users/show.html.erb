@@ -1,17 +1,16 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, "購入履歴") %>
 <section class="account">
     <div class="user" style="display: flex">
         <div class="user_container">
             <div class="personal">
-            <%= link_to image_tag("user.png", alt: @user.name), "#", class:"gravatar" %>
-            <%= @user.name %>
+            <%= link_to image_tag("user.png", alt: @user.first_name), "#", class:"gravatar" %>
+            <%= @user.last_name %><%= @user.first_name %>
             </div>
             <div class="history">
                 <div class="order_wrapper">
                     <% @address_ids.each do |address_id|%>
                     <% @sum = 0 %>
                     <div class="order_container hover">
-                        
                         <div class="cart_area">
                             <% orders = Order.where(address_id: address_id.id) %>
                             <% orders.each do |order|%>

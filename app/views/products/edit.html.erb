@@ -22,10 +22,8 @@
                     ["食べ物", "food"]
                     ], class: 'category_class' %>
 
-                <%= f.fields_for :sizes do |s| %>
-                    <p><%= s.label :count, "個数"%></p>
-                    <%= s.select :count, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]%>
-                <% end %>
+                <p><%= f.label :count, "個数"%></p>
+                <%= f.select :count, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]%>
 
                 <p class="image_name">Image</p>
                 <%= f.fields_for :images do |i| %>

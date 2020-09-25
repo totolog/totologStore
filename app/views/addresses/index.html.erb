@@ -4,10 +4,10 @@
         <div class="buy_area">
             <div class="left">
                 <div class="main_area">
+                    <%= form_for(:session, url: addresses_path) do |f|%>
                     <div class="address_container">
                         <div class="address_header"><h2>1.お届け先情報</h2></div>
                         <div class="address_area">
-                            <%= form_for(:session, url: addresses_path) do |f|%>
                             <div class="select">
                                 <div class="store">
                                     <%= f.check_box :store, class: 'btn_store' %>
@@ -17,11 +17,11 @@
                             <div class="user_name">
                                 <div class="flex_box1">
                                     <p><%= f.label :last_name, "姓" %></p>
-                                    <%= f.text_field :last_name, required:"required" %>
+                                    <%= f.text_field :last_name, required:"required", value:"#{@current_user.last_name}" %>
                                 </div>
                                 <div class="flex_box2">
                                     <p><%= f.label :first_name, "名" %></p>
-                                    <%= f.text_field :first_name, required:"required" %>
+                                    <%= f.text_field :first_name, required:"required", value:"#{@current_user.first_name}"%>
                                 </div>
                             </div>
                             <div class="user_furi_name">
@@ -34,8 +34,10 @@
                                     <%= f.text_field :furi_first_name, required:"required" %>
                                 </div>
                             </div>
-                            <p><%= f.label :postal_code, "郵便番号" %></p>
-                            <%= f.text_field :postal_code, class: 'address_controle', onKeyUp:"AjaxZip3.zip2addr(this,'','session[prefecture]','session[address]');", required:"required" %>
+                            <div class="postal_code">
+                                <p><%= f.label :postal_code, "郵便番号" %></p>
+                                <%= f.text_field :postal_code, class: 'address_controle', onKeyUp:"AjaxZip3.zip2addr(this,'','session[prefecture]','session[address]');", required:"required" %>
+                            </div>
                             <div class="prefecture">
                                 <div class="flex_box1">
                                     <p><%= f.label :prefecture, "都道府県" %></p>
@@ -73,26 +75,23 @@
                     <% @cart_items.each do |cart_item|%>
                     <% product = Product.find_by(id: cart_item.product_id) %>
                     <div class="card mb-3 hover" style="max-width: 840px; margin-top: 3rem;">
-                        <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <% images= Image.find_by(product_id: cart_item.product_id) %>
-                            <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: cart_item.product_id).name}", class:"card-img" %>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                            <h5 class="card-title"><%= product.name %></h5>
-                            <p class="card-text"></p>
-                            <p class="card-text">
-                                <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
-                                <% if product.category == "running_shoes" %>
-                                    <p class="text-muted">サイズ：<%= cart_item.size%></p>
-                                <% end %>
-                                <p class="text-muted"><%= cart_item.quantity%>個</p>
-                                <p style="margin-top:2rem;">小計：<%= product.price * cart_item.quantity %> 円</p>
-                                <% @sum += product.price * cart_item.quantity %>
-                            </p>
+                        <div class="cart_content">
+                            <div class="cart_content_image">
+                                <% images= Image.find_by(product_id: cart_item.product_id) %>
+                                <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: cart_item.product_id).name}", class:"card-img" %>
                             </div>
-                        </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                <h4 class="card-title"><%= product.name %></h4>
+                                <p class="card-text"></p>
+                                <p class="card-text">
+                                    <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
+                                    <p class="text-muted"><%= cart_item.quantity%>個</p>
+                                    <p style="margin-top:2rem;">小計：<%= product.price * cart_item.quantity %> 円</p>
+                                    <% @sum += product.price * cart_item.quantity %>
+                                </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <% end %>

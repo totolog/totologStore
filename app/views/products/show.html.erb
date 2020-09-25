@@ -24,15 +24,15 @@
                         <p class="detail_sentence"><%= @product.comment %></p>
                     </div>
                     <div class="cart">
-                        <%= form_for(CartItem.new, url: cart_items_path) do |f|%>
-                        <% if @product.category == ("running_shoes" || "socks") %>
-                            <%= f.label :size, "サイズ"%>
-                            <p><%= f.select :size, [24.0, 24.5,25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0] %></p>
-                        <% end %>
-                        <%= f.label :quantity, "数量"%>
-                        <p><%= f.select :quantity, @count, include_blank: "0" %></p>
-                        <%= f.hidden_field :product_id, value: @product.id %>
-                        <%= f.submit "カートに追加", class:"btn cart_btn" %>
+                        <% if @product_count == 0%>
+                            <p class="no_exist">大変申し訳ございません。こちらの商品は現在、在庫がありません。</p>
+                        <% else %>
+                            <%= form_for(CartItem.new, url: cart_items_path) do |f|%>
+                            <%= f.label :quantity, "数量"%>
+                            <p><%= f.select :quantity, @count, include_blank: "0" %></p>
+                            <%= f.hidden_field :product_id, value: @product.id %>
+                            <%= f.submit "カートに追加", class:"btn cart_btn" %>
+                            <% end %>
                         <% end %>
                     </div>
                 </div>

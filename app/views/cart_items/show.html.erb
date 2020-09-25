@@ -1,26 +1,32 @@
 <% provide(:title, "Cart") %>
 
-<section calss="cart">
+<section class="cart">
   <div class="cart_container">
     <div calss="cart_area" style="width: 70%;">
       <% @sum = 0 %>
       <% @cart_items.each do |cart_item|%>
       <% product = Product.find_by(id: cart_item.product_id) %>
+      <% product_count = product.count %>
+      <% count = Array.new %>
+      <% count.push *1..product_count %>
       <div class="card mb-3 hover" style="max-width: 840px; margin-top: 3rem;">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-4 image">
             <% images= Image.find_by(product_id: cart_item.product_id) %>
             <%= image_tag "#{images.name1}", alt: "#{Product.find_by(id: cart_item.product_id).name}", class:"card-img" %>
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"><%= product.name %></h5>
+              <h4 class="card-title"><%= product.name %></h4>
               <p class="card-text">
                 <p class="text-muted" style="font-size: 2rem;"><%= product.price %><span style="font-size: 1.5rem"> 円/個</span></p>
-                <% if product.category == "running_shoes" %>
-                  <p class="text-muted">サイズ：<%= cart_item.size%></p>
+                <p class="text-muted">
+                <%= form_for(CartItem.find(cart_item.id)) do |f|%>
+                <%= f.label :quantity, "数量"%>
+                <%= f.select :quantity, count, selected: cart_item.quantity %>
+                <%= f.submit "数量変更", class:"btn_change btn" %>
                 <% end %>
-                <p class="text-muted"><%= cart_item.quantity%>個</p>
+                </p>
                 <p style="margin-top:2rem;">小計：<%= product.price * cart_item.quantity %> 円</p>
                 <% @sum += product.price * cart_item.quantity %>
               </p>
@@ -33,7 +39,7 @@
       </div>
       <% end %>
     </div>
-    <div class="accounting" style="min-width: 200px; ">
+    <div class="accounting">
         <div class="accounting_title">
           <div class="title"><h3>ご注文金額</h3></div>
         </div>

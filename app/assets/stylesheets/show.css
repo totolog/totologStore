@@ -20,7 +20,7 @@
 
 .left .address_area,
 .left .cash_area {
-    padding: 1rem 2rem;
+    padding: 3rem 2rem;
 }
 
 .left .address_header,
@@ -50,8 +50,7 @@
 }
 
 .left p {
-    margin-top: 3rem;
-    margin-bottom: 0;
+    margin-top: 1rem;
 }
 
 .left input:not(.btn) {

@@ -8,6 +8,11 @@ class ProductsController < ApplicationController
             category_order = category.order(created_at: :desc)
             @product_count = category.count
             @products = category_order.paginate(page: params[:page], per_page: 9)
+        elsif params[:search]
+            search = Product.search(params[:search])
+            search_order = search.order(created_at: :desc)
+            @product_count = search.count
+            @products = search_order.paginate(page: params[:page], per_page: 9)
         else
             @product_count = Product.count
             @product_content = Product.order(created_at: :desc).all
@@ -15,20 +20,22 @@ class ProductsController < ApplicationController
         end
     end
 
+    def search
+        @products = Product.search(params:[:search])
+    end
+
     def show
         @product= Product.find_by(id: params[:id])
         @product_images = @product.images
-        product_count = Size.find_by(product_id: @product.id).count
+        @product_count = @product.count
         @count = Array.new
-        @count.push *1..product_count
-
-
+        @count.push *1..@product_count
     end
 
     def resister
         @product_resister = Product.new
         @image = @product_resister.images.build
-        @size = @product_resister.sizes.build
+        # @size = @product_resister.sizes.build
     end
 
     def create
@@ -56,13 +63,14 @@ class ProductsController < ApplicationController
 
     private
     def product_image_params
-        params.require(:product).permit(:name, :price, :comment, :category, images_attributes:
+        params.require(:product).permit(:name, :price, :comment, :category, :count, images_attributes:
             [
                 :id, :name1, :name2, :name3, :name4
-            ], sizes_attributes:
-            [
-                :id, :size, :count
             ]
+            # , sizes_attributes:
+            # [
+            #     :id, :size, :count
+            # ]
         )
     end
 end

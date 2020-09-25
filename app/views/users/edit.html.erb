@@ -1,29 +1,35 @@
 <% provide(:title, "Edit User") %>
 <section class="signup">
     <div class="signup_container">
-        <h1>Update your profile</h1>
+        <h1>個人情報の編集</h1>
         <div class="form_area">
         <%= form_for(@user) do |f| %>
             <%= render 'shared/error_messages' %>
 
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %>
+            <%# <%= f.label :name %>
+            <%# <%= f.text_field :name, class: 'form-control' %>
 
-            <%= f.label :email %>
+            <%= f.label :last_name, "名　字" %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+
+            <%= f.label :first_name, "名　前" %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+
+            <%= f.label :email, "Email アドレス" %>
             <%= f.email_field :email, class: 'form-control' %>
 
-            <%= f.label :tel %>
+            <%= f.label :tel, "電話番号" %>
             <%= f.text_field :tel, class: 'form-control' %>
 
-            <%= f.label :password %>
+            <%= f.label :password, "パスワード（パスワードを変更する場合）" %>
             <%= f.password_field :password, class: 'form-control' %>
 
-            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.label :password_confirmation, "パスワード確認（パスワードを変更する場合）" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-            <%= f.submit "Save changes", class:"signup_btn" %>
+            <%= f.submit "変更を保存", class:"signup_btn" %>
         <% end %>
-        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+        <p>新規会員登録は <%= link_to "コチラ", signup_path %></p>
         </div>
     </div>
 </section>

@@ -1,27 +1,33 @@
-<% provide(:title, "Sign Up") %>
+<% provide(:title, "新規会員登録") %>
 <section class="signup">
     <div class="signup_container">
-        <h1> Sign Up</h1>
+        <h1>新規会員登録</h1>
         <div class="form_area">
         <%= form_for(@user) do |f| %>
             <%= render 'shared/error_messages' %>
 
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %>
+            <%# <%= f.label :name %>
+            <%# <%= f.text_field :name, class: 'form-control' %>
 
-            <%= f.label :email %>
+            <%= f.label :last_name, "名　字" %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+
+            <%= f.label :first_name, "名　前" %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+
+            <%= f.label :email, "Email アドレス" %>
             <%= f.email_field :email, class: 'form-control' %>
 
-            <%= f.label :tel %>
+            <%= f.label :tel, "電話番号" %>
             <%= f.text_field :tel, class: 'form-control' %>
 
-            <%= f.label :password %>
+            <%= f.label :password, "パスワード" %>
             <%= f.password_field :password, class: 'form-control' %>
 
-            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.label :password_confirmation, "パスワード確認" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-            <%= f.submit "Create", class:"signup_btn" %>
+            <%= f.submit "登　録", class:"signup_btn" %>
         <% end %>
         </div>
     </div>

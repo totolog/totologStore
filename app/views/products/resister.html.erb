@@ -5,16 +5,16 @@
         <div class="resister_area">
         <%= form_for(@product_resister) do |f| %>
 
-            <p><%= f.label :name %></p>
+            <p><%= f.label :name, "商品名" %></p>
             <%= f.text_field :name, class: 'resister_controle' %>
 
-            <p><%= f.label :price %></p>
+            <p><%= f.label :price, "価格" %></p>
             <%= f.text_field :price, class: 'resister_controle' %>
 
-            <p><%= f.label :comment %></p>
+            <p><%= f.label :comment, "商品説明" %></p>
             <%= f.text_field :comment, class: 'resister_controle' %>
 
-            <p><%= f.label :category %></p>
+            <p><%= f.label :category, "カテゴリー" %></p>
             <%= f.select :category, [
                 ["野菜", "vegetables"],
                 ["フルーツ", "fruits"],
@@ -22,20 +22,12 @@
                 ["食べ物", "food"]
                 ], class: 'category_class' %>
 
-                <%= f.fields_for :sizes do |s| %>
-                <div class="none" style="display: none">
-                    <p><%= s.label :size, "サイズ"%></p>
-                    <%= s.select :size, [24.0, 24.5,25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0], {include_blank: 0}, {class:"size", disabled:"disabled"}%>
-                </div>
+            <p><%= f.label :count, "個数"%></p>
+            <%= f.select :count, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], {include_blank: 0}%>
 
-                <p><%= s.label :count, "個数"%></p>
-                <%= s.select :count, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], {include_blank: 0}%>
-
-                <% end %>
-
-            <p class="image_name">Image</p>
+            <p class="image_name">画像</p>
             <%= f.fields_for :images do |i| %>
-                <%= i.label :name1, "トップ画像" %>
+                <%= i.label :name1, "トップ画像（必須）" %>
                 <%= i.file_field :name1 %>
 
                 <%= i.label :name2, "画像2" %>
@@ -49,7 +41,7 @@
             <% end %>
 
 
-            <%= f.submit "Resister", class:"btn resister_btn" %>
+            <%= f.submit "商品登録", class:"btn resister_btn" %>
         <% end %>
         </div>
     </div>

@@ -8,6 +8,7 @@ class AddressesController < ApplicationController
         @product= Product.find_by(id: current_user.id)
 
         @addresses = Address.new
+        @current_user = current_user
     end
 
     def create
