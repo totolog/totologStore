@@ -1,0 +1,90 @@
+.buy_container {
+    width: 70%;
+    margin: 5rem auto 0;
+}
+.buy_container .buy_area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buy_container .left {
+    width: 70%;
+}
+
+.left .address_container,
+.left .cash_container {
+    border-right: 2px solid #eee;
+    border-left: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+}
+
+.left .address_area,
+.left .cash_area {
+    padding: 3rem 2rem;
+}
+
+.left .address_header,
+.left .cash_header {
+    background: #000;
+    padding: 0.5rem;
+}
+
+.left h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+.left .cash_container {
+    margin-top: 2rem;
+}
+
+.left .user_name,
+.left .user_furi_name,
+.left .prefecture {
+    display: flex;
+}
+
+.left .flex_box2 {
+    margin-left: 1rem;
+}
+
+.left p {
+    margin-top: 1rem;
+}
+
+.left input:not(.btn) {
+    padding: 5px 2px;
+    border: solid 1px #bfbfbf;
+}
+
+.left .radio1,
+.left .radio2 {
+    margin: 2rem;
+}
+
+.left .radio1-1,
+.left .radio2-1 {
+    margin-right: 0.5rem;
+}
+
+.buy_container .right {
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+}
+
+.buy_container .total_title {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 3rem auto 5rem;
+}
+
+.right .cart_area {
+    order: 2;
+}
+
+.right .address_area {
+    order: 1;
+}

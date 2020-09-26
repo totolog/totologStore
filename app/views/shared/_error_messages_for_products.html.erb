@@ -1,0 +1,13 @@
+<% if @product_resister.errors.any? || @image.errors.any? %>
+    <div id="error_explanation">
+        <div class="alert alert-danger">
+            The form contains <%= pluralize(@product_resister.errors.count, "error") %>.
+        </div>
+        <ul>
+            <% @product_resister.errors.full_messages.zip(@image.errors.full_messages) do |msg1, msg2| %>
+            <li><%= msg1 %></li>
+            <li><%= msg2 %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
