@@ -1,9 +1,10 @@
-<h1>Sample App</h1>
+<h1>Totolog Store</h1>
 
-<p>Hi <%= @user.last_name %><%= @user.first_name %>,</p>
+<p><%= @user.last_name %><%= @user.first_name %>さん、こんにちは</p>
 
 <p>
-Welcome to the Sample App! Click on the link below to activate your account:
+ようこそ、Totolog Storeへ<br>
+アカウントを有効にするために、下のボタンをクリックしてください。
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= link_to "承認する", edit_account_activation_url(@user.activation_token, email: @user.email) %>
