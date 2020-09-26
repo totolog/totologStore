@@ -1,4 +1,5 @@
 class Image < ApplicationRecord
+    validates :name1, presence: true
     belongs_to :product, inverse_of: :images
 
     mount_uploader :name1, Name1Uploader

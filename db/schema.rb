@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_043105) do
+ActiveRecord::Schema.define(version: 2020_09_25_112645) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "user_id"
@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_043105) do
     t.datetime "updated_at", null: false
     t.boolean "store", default: false, null: false
     t.string "how_to_pay"
-    t.integer "order_id"
-    t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -35,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_043105) do
     t.integer "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "size"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
@@ -44,14 +41,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_043105) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "counts", force: :cascade do |t|
-    t.integer "size_id"
-    t.integer "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["size_id"], name: "index_counts_on_size_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -64,23 +53,12 @@ ActiveRecord::Schema.define(version: 2020_09_21_043105) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_products", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["product_id"], name: "index_order_products_on_product_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "product_id"
     t.integer "quantity"
     t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "size"
     t.integer "user_id"
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
@@ -93,21 +71,10 @@ ActiveRecord::Schema.define(version: 2020_09_21_043105) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_name"
     t.string "category"
   end
 
-  create_table "sizes", force: :cascade do |t|
-    t.integer "product_id"
-    t.float "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "count"
-    t.index ["product_id"], name: "index_sizes_on_product_id"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.string "tel"
     t.datetime "created_at", null: false

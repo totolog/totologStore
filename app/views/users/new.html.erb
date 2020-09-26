@@ -5,10 +5,6 @@
         <div class="form_area">
         <%= form_for(@user) do |f| %>
             <%= render 'shared/error_messages' %>
-
-            <%# <%= f.label :name %>
-            <%# <%= f.text_field :name, class: 'form-control' %>
-
             <%= f.label :last_name, "名　字" %>
             <%= f.text_field :last_name, class: 'form-control' %>
 

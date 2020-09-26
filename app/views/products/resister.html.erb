@@ -4,7 +4,7 @@
         <h1> 商品登録</h1>
         <div class="resister_area">
         <%= form_for(@product_resister) do |f| %>
-
+            <%= render 'shared/error_messages_for_products' %>
             <p><%= f.label :name, "商品名" %></p>
             <%= f.text_field :name, class: 'resister_controle' %>
 
