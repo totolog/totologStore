@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :addresses, only: [:index, :create, :show]
 
+  get '/admins/signin', to: 'admins#signin', as: :signin_user
+  get '/admins/login', to: 'admins#login', as: :login_user
   get "/resister", to:"products#resister"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
