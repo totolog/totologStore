@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/help", to:"static_pages#help"
   get "/about", to:"static_pages#about"
   get "/contact", to:"static_pages#contact"
+  get '/admins/signin', to: 'static_pages#signin', as: :signin_user
+  get '/admins/login', to: 'static_pages#login', as: :login_user
 
   get  "/signup", to:"users#new"
   resources :users
@@ -22,9 +24,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :create, :show]
 
   resources :addresses, only: [:index, :create, :show]
-
-  get '/admins/signin', to: 'admins#signin', as: :signin_user
-  get '/admins/login', to: 'admins#login', as: :login_user
   get "/resister", to:"products#resister"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
