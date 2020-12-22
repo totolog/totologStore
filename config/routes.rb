@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "/help", to:"static_pages#help"
   get "/about", to:"static_pages#about"
   get "/contact", to:"static_pages#contact"
-  get '/admins/signin', to: 'static_pages#signin', as: :signin_user
-  get '/admins/login', to: 'static_pages#login', as: :login_user
+  get '/signin', to: 'static_pages#signin', as: :signin_user
+  get '/login', to: 'static_pages#login', as: :login_user
 
   get  "/signup", to:"users#new"
   resources :users
